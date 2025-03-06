@@ -29,5 +29,6 @@ Add project from disk
   <img src="https://contrib.rocks/image?repo=NhomNhem/FiniteStateMachineUnity" />
 </a>
 
-## Trello
-[NhomToongTenz](https://trello.com/b/EFoiLIvj/nhomtoongtenz)
+## Nơi tra thông tin
+- [Trello](https://trello.com/b/EFoiLIvj/nhomtoongtenz)
+- [Finite State Machine](https://drive.google.com/drive/u/3/folders/1NUh4A808lUgmavTgfhrh6IS8aoyfifTv)
