@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
 {
-    [SerializeField] public InputReader InputReader {  get; private set; } 
+    [field: SerializeField] public InputReader InputReader {  get; private set; } 
 
     private void Start()
     {
