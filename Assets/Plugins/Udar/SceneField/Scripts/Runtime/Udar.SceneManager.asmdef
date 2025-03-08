@@ -1,6 +1,6 @@
 {
-    "name": "StateMachine",
-    "rootNamespace": "FiniteStateMachine",
+    "name": "Udar.SceneManager",
+    "rootNamespace": "",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
