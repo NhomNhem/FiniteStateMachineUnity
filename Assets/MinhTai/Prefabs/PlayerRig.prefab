@@ -321,8 +321,8 @@ MonoBehaviour:
   UpdateMethod: 2
   Targets:
   - Object: {fileID: 4967554348355677628}
-    Weight: 1
-    Radius: 0
+    Weight: 0.25
+    Radius: 2
   m_LegacyTargets: []
 --- !u!1 &9167894917910454315
 GameObject:
@@ -1337,6 +1337,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 7.792487
       objectReference: {fileID: 0}
+    - target: {fileID: 8699742624761376869, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
+      propertyPath: cinetargetGroup
+      value: 
+      objectReference: {fileID: 7675804377049773478}
     - target: {fileID: 8805536650384412347, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 24.784513
