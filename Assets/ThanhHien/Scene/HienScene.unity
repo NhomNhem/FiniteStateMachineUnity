@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 3e5399bd195de7649b874f58c1b9f8a3, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -206,8 +206,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15799269, y: -0.005489501, z: 0.00087834644, w: 0.9874247}
-  m_LocalPosition: {x: 0.704, y: 2.54, z: -10.09}
+  m_LocalRotation: {x: 0.25336385, y: -0.005377926, z: 0.0014085539, w: 0.96735513}
+  m_LocalPosition: {x: 0.704, y: 3.71, z: -10.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -473,6 +473,8 @@ GameObject:
   - component: {fileID: 1509012368}
   - component: {fileID: 1509012367}
   - component: {fileID: 1509012366}
+  - component: {fileID: 1509012372}
+  - component: {fileID: 1509012373}
   m_Layer: 0
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -606,15 +608,15 @@ MonoBehaviour:
   Radius: 10
   Orbits:
     Top:
-      Radius: 2
-      Height: 5
+      Radius: 1.78
+      Height: 4.3
     Center:
       Radius: 4
-      Height: 2.25
+      Height: 3.42
     Bottom:
-      Radius: 2.5
-      Height: 0.1
-    SplineCurvature: 0.5
+      Radius: 2.64
+      Height: -0.76
+    SplineCurvature: 0.42
   RecenteringTarget: 2
   HorizontalAxis:
     Value: 0
@@ -697,13 +699,59 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1509012365}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15799268, y: -0.0054895007, z: 0.0008783465, w: 0.9874247}
-  m_LocalPosition: {x: 0.704, y: 2.54, z: -10.09}
+  m_LocalRotation: {x: 0.25336382, y: -0.0053779245, z: 0.0014085532, w: 0.96735513}
+  m_LocalPosition: {x: 0.704, y: 3.71, z: -10.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1509012372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509012365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7194dc27b9df64c8beca7482ee8e0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerIndex: -1
+  AutoEnableInputs: 1
+  XYAxis: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  ZAxis: {fileID: 0}
+--- !u!114 &1509012373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509012365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 1
+  m_IgnoreTag: Player
+  m_TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_MinimumDistanceFromTarget: 0.1
+  m_AvoidObstacles: 1
+  m_DistanceLimit: 0
+  m_MinimumOcclusionTime: 0
+  m_CameraRadius: 0.1
+  m_Strategy: 1
+  m_MaximumEffort: 4
+  m_SmoothingTime: 0
+  m_Damping: 0
+  m_DampingWhenOccluded: 0
+  m_OptimalTargetDistance: 0
 --- !u!1 &2081505671
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,6 +868,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 42311718624780257, guid: 6f6bfca31dbeb674495ec9e835365eaf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 42311718624780257, guid: 6f6bfca31dbeb674495ec9e835365eaf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.11
+      objectReference: {fileID: 0}
     - target: {fileID: 330165352353453897, guid: 6f6bfca31dbeb674495ec9e835365eaf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 20.109459
@@ -1503,6 +1559,10 @@ PrefabInstance:
     - target: {fileID: 9124658842683572503, guid: 6f6bfca31dbeb674495ec9e835365eaf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -177.6416
+      objectReference: {fileID: 0}
+    - target: {fileID: 9125469451644530943, guid: 6f6bfca31dbeb674495ec9e835365eaf, type: 3}
+      propertyPath: <RotationDamping>k__BackingField
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9125469451644530943, guid: 6f6bfca31dbeb674495ec9e835365eaf, type: 3}
       propertyPath: <FreeLookMovementSpeed>k__BackingField
