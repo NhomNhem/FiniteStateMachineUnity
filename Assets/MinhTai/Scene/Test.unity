@@ -1122,14 +1122,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRig
       objectReference: {fileID: 0}
-    - target: {fileID: 7675804377049773478, guid: fa9782f4fca7cf147aa9693611f22ae0, type: 3}
-      propertyPath: Targets.Array.data[0].Radius
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7675804377049773478, guid: fa9782f4fca7cf147aa9693611f22ae0, type: 3}
-      propertyPath: Targets.Array.data[0].Weight
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 8736908721232547341, guid: fa9782f4fca7cf147aa9693611f22ae0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.61084

@@ -13,6 +13,8 @@ public class PlayerStateMachine : StateMachine
 
     [field: SerializeField] public Targeter Targeter { get; private set; }
 
+    [field: SerializeField] public ForceReceive ForceReceive { get; private set; }
+
     [field: SerializeField] public float FreeLookMovementSpeed { get; private set; }
     [field: SerializeField] public float RotationDamping { get; private set; }
 
