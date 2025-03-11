@@ -1,5 +1,4 @@
-using UnityEngine;
-using UnityEngine.UIElements;
+﻿using UnityEngine;
 
 public class PlayerFreeLookState : PlayerBaseState
 {
@@ -7,29 +6,29 @@ public class PlayerFreeLookState : PlayerBaseState
     private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
 
     private const float AnimatorDampTime = 0.1f;
+
     public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
-        stateMachine.InputReader.TargetEvent += OnTarget;
-
-        stateMachine.Animator.Play(FreeLookBlendTreeHash); 
+        stateMachine.InputReader.TargetEvent += OnTarget; 
+        stateMachine.Animator.Play(FreeLookBlendTreeHash);
     }
 
     public override void Tick(float deltaTime)
     {
         Vector3 movement = CalculateMovement();
-        stateMachine.transform.Translate(movement * deltaTime);
-        stateMachine.Controller.Move(movement * stateMachine.FreeLookMovementSpeed * deltaTime);
-
-        if (stateMachine.InputReader.MovementValue == Vector2.zero)
+        
+        if (movement.sqrMagnitude > 0.01f) 
         {
-            stateMachine.Animator.SetFloat(FreeLookSpeedHash, 0, AnimatorDampTime, deltaTime);
-            return;
+            FaceMovementDirection(movement, deltaTime);
         }
 
-        stateMachine.Animator.SetFloat(FreeLookSpeedHash, 1, AnimatorDampTime, deltaTime);
-        FaceMovementDirection(movement, deltaTime);
+
+        stateMachine.Controller.Move(movement * stateMachine.FreeLookMovementSpeed * deltaTime);
+
+        float speed = movement.magnitude;
+        stateMachine.Animator.SetFloat(FreeLookSpeedHash, speed > 0.1f ? 1f : 0f, AnimatorDampTime, deltaTime);
     }
 
     public override void Exit()
@@ -39,7 +38,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
     private void OnTarget()
     {
-        if (stateMachine.Targeter.GetComponent<Targeter>().SelectTarget()) { return; }
+        if (stateMachine.Targeter.GetComponent<Targeter>().SelectTarget()) return;
         stateMachine.SwitchState(new PlayerTargetState(stateMachine));
     }
 
@@ -59,8 +58,12 @@ public class PlayerFreeLookState : PlayerBaseState
 
     private void FaceMovementDirection(Vector3 movement, float deltaTime)
     {
+        if (movement.sqrMagnitude < Mathf.Epsilon) return; 
+
+        Quaternion targetRotation = Quaternion.LookRotation(movement);
         stateMachine.transform.rotation = Quaternion.Lerp(
             stateMachine.transform.rotation,
-            Quaternion.LookRotation(movement), deltaTime * stateMachine.RotationDamping);
+            targetRotation,
+            deltaTime * stateMachine.RotationDamping);
     }
 }
