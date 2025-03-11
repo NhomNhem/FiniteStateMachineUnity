@@ -1943,6 +1943,7 @@ GameObject:
   - component: {fileID: 1087961446084984070}
   - component: {fileID: 284574124020055713}
   - component: {fileID: 1824772583397794046}
+  - component: {fileID: 8733392674247332222}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2031,8 +2032,10 @@ MonoBehaviour:
   <InputReader>k__BackingField: {fileID: 4589220240999756809}
   <Controller>k__BackingField: {fileID: 1824772583397794046}
   <Animator>k__BackingField: {fileID: 284574124020055713}
+  <Targeter>k__BackingField: {fileID: 0}
   <FreeLookMovementSpeed>k__BackingField: 15
   <RotationDamping>k__BackingField: 0
+  <ForceReceiver>k__BackingField: {fileID: 8733392674247332222}
 --- !u!95 &284574124020055713
 Animator:
   serializedVersion: 7
@@ -2080,6 +2083,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8733392674247332222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3608347100628644908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6897c9b621044941b0df28b033a004e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1824772583397794046}
 --- !u!1 &3631114720615199780
 GameObject:
   m_ObjectHideFlags: 0

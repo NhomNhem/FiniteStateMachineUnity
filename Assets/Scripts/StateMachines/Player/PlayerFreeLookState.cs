@@ -17,10 +17,9 @@ public class PlayerFreeLookState : PlayerBaseState
 
     }
     public override void Tick(float deltaTime)
-    {
+    { 
         Vector3 movement = CalculateMovement();
-        float slowDownFactor = 0.2f; // Gi?m t?c ?? xu?ng 50%
-        stateMachine.Controller.Move(movement * stateMachine.FreeLookMovementSpeed * slowDownFactor * deltaTime);
+        stateMachine.Controller.Move(movement * stateMachine.FreeLookMovementSpeed  * deltaTime);
 
         if (stateMachine.InputReader.MovementValue == Vector2.zero)
         {
