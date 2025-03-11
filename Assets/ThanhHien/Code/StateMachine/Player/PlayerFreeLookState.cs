@@ -11,24 +11,22 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.InputReader.TargetEvent += OnTarget; 
+        stateMachine.InputReader.TargetEvent += OnTarget;
         stateMachine.Animator.Play(FreeLookBlendTreeHash);
     }
 
     public override void Tick(float deltaTime)
     {
         Vector3 movement = CalculateMovement();
-        
-        if (movement.sqrMagnitude > 0.01f) 
-        {
-            FaceMovementDirection(movement, deltaTime);
-        }
-
-
-        stateMachine.Controller.Move(movement * stateMachine.FreeLookMovementSpeed * deltaTime);
+        Move(movement * stateMachine.FreeLookMovementSpeed, deltaTime);
 
         float speed = movement.magnitude;
         stateMachine.Animator.SetFloat(FreeLookSpeedHash, speed > 0.1f ? 1f : 0f, AnimatorDampTime, deltaTime);
+
+        if (speed > 0.1f)
+        {
+            FaceMovementDirection(movement, deltaTime); 
+        }
     }
 
     public override void Exit()
@@ -38,8 +36,10 @@ public class PlayerFreeLookState : PlayerBaseState
 
     private void OnTarget()
     {
-        if (stateMachine.Targeter.GetComponent<Targeter>().SelectTarget()) return;
-        stateMachine.SwitchState(new PlayerTargetState(stateMachine));
+        if (stateMachine.Targeter.SelectTarget())
+        {
+            stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+        }
     }
 
     private Vector3 CalculateMovement()
@@ -58,7 +58,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
     private void FaceMovementDirection(Vector3 movement, float deltaTime)
     {
-        if (movement.sqrMagnitude < Mathf.Epsilon) return; 
+        if (movement.sqrMagnitude < Mathf.Epsilon) return;
 
         Quaternion targetRotation = Quaternion.LookRotation(movement);
         stateMachine.transform.rotation = Quaternion.Lerp(
