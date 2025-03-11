@@ -974,8 +974,24 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5481351421792500234, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481351421792500234, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
       propertyPath: <TargetingMovementSpeed>k__BackingField
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481351421792500234, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[0].<AnimationName>k__BackingField
+      value: Attack 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481351421792500234, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[1].<AnimationName>k__BackingField
+      value: Attack 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481351421792500234, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[2].<AnimationName>k__BackingField
+      value: Attack 3
       objectReference: {fileID: 0}
     - target: {fileID: 5512674569205237897, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
