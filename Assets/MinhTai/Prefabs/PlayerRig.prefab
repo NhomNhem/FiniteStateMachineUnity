@@ -973,6 +973,10 @@ PrefabInstance:
       propertyPath: <RotationDamping>k__BackingField
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5481351421792500234, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
+      propertyPath: <TargetingMovementSpeed>k__BackingField
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5512674569205237897, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 8.997671
