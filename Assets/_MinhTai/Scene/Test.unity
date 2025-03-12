@@ -350,6 +350,7 @@ GameObject:
   - component: {fileID: 508940510}
   - component: {fileID: 508940509}
   - component: {fileID: 508940513}
+  - component: {fileID: 508940514}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -440,7 +441,7 @@ Transform:
   m_GameObject: {fileID: 508940508}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.26, y: 2.9921086, z: 14.09}
+  m_LocalPosition: {x: 13.26, y: 1.61, z: 14.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -458,6 +459,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0819b6bddd1ed764791d5ec67e0a9d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &508940514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508940508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce1e336360287043845a8230d6f5afd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &526138013
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +485,7 @@ GameObject:
   - component: {fileID: 526138015}
   - component: {fileID: 526138014}
   - component: {fileID: 526138018}
+  - component: {fileID: 526138019}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -561,7 +576,7 @@ Transform:
   m_GameObject: {fileID: 526138013}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4072729, y: 1.01, z: 6.9915023}
+  m_LocalPosition: {x: 1.4072729, y: 0.75, z: 6.9915023}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -579,6 +594,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0819b6bddd1ed764791d5ec67e0a9d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &526138019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526138013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce1e336360287043845a8230d6f5afd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &613562277
 GameObject:
   m_ObjectHideFlags: 0

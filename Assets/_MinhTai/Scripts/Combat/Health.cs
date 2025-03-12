@@ -1,0 +1,22 @@
+using UnityEngine;
+
+public class Health : MonoBehaviour
+{
+    [SerializeField] private int maxHealth = 100; // Máu tối đa
+
+    private int health; // Máu hiện tại
+
+    private void Start()
+    {
+        health = maxHealth;
+    }
+
+    public void DealDamage(int damage)
+    {
+        if (health <= 0) { return; }
+
+        health = Mathf.Max(health - damage, 0);
+
+        Debug.Log(health);
+    }
+}
