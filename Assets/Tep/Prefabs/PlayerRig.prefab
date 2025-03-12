@@ -966,9 +966,17 @@ PrefabInstance:
       value: -157.49086
       objectReference: {fileID: 0}
     - target: {fileID: 5481351421792500234, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
+      propertyPath: <DodgeLength>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481351421792500234, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
       propertyPath: <ForceReceive>k__BackingField
       value: 
       objectReference: {fileID: 928432752256490040}
+    - target: {fileID: 5481351421792500234, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
+      propertyPath: <DodgeDuration>k__BackingField
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 5481351421792500234, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
       propertyPath: <RotationDamping>k__BackingField
       value: 10
