@@ -982,6 +982,30 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5481351421792500234, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[0].<Force>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481351421792500234, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[1].<Force>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481351421792500234, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[2].<Force>k__BackingField
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481351421792500234, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[0].<ForceTime>k__BackingField
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481351421792500234, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[1].<ForceTime>k__BackingField
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481351421792500234, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[2].<ForceTime>k__BackingField
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481351421792500234, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
       propertyPath: <Attacks>k__BackingField.Array.data[0].<AnimationName>k__BackingField
       value: Attack 1
       objectReference: {fileID: 0}
@@ -1435,6 +1459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 6175694854649609391}
+  drap: 0.05
 --- !u!95 &6115182974055014177 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8186680642610253203, guid: a5f3a4dfec498634c8390b1dd7d553bb, type: 3}
