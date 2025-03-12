@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int maxHealth = 100;
 
-    // Update is called once per frame
-    void Update()
+    private int health;
+    private void Start()
     {
-        
+        health = maxHealth;
+    }
+    public void DealDamage(int damage)
+    {
+        if(health == 0 ) { return; }
+        health = Mathf.Max(health  - damage,0);
+        Debug.Log(health);
     }
 }
