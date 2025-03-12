@@ -14,7 +14,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public Targeter Targeter { get; private set; }
 
     [field: SerializeField] public ForceReceive ForceReceive { get; private set; }
-
+    [field: SerializeField] public WeaponHitbox Weapon { get; private set; }
     [field: SerializeField] public float FreeLookMovementSpeed { get; private set; }
 
     [field: SerializeField] public float TargetingMovementSpeed { get; private set; }

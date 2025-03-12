@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaponHitbox : MonoBehaviour
 {
+    private int damage;
     [SerializeField] private Collider myCollider;
     private List<Collider> alreadyCollidedWith = new List<Collider>();
     private void OnEnable()
@@ -17,7 +18,11 @@ public class WeaponHitbox : MonoBehaviour
         alreadyCollidedWith.Add(other);
         if (other.TryGetComponent<Health>(out Health health))
         {
-            health.DealDamage(10);
+            health.DealDamage(damage);
         }
+    }
+    public void SetAttack(int damage)
+    {
+        this.damage = damage;
     }
 }

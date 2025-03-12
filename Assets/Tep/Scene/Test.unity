@@ -2813,6 +2813,10 @@ PrefabInstance:
       value: 12.640737
       objectReference: {fileID: 0}
     - target: {fileID: 7588631596762081464, guid: fa9782f4fca7cf147aa9693611f22ae0, type: 3}
+      propertyPath: <Weapon>k__BackingField
+      value: 
+      objectReference: {fileID: 1300359104}
+    - target: {fileID: 7588631596762081464, guid: fa9782f4fca7cf147aa9693611f22ae0, type: 3}
       propertyPath: <RotationDamping>k__BackingField
       value: 20
       objectReference: {fileID: 0}
