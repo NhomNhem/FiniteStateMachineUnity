@@ -1,21 +1,13 @@
 using UnityEngine;
 
-public abstract class PlayerStateMachine : StateMachine
+public class PlayerStateMachine : StateMachine
 {
-    protected PlayerStateMachine stateMachine;
-
-    public PlayerStateMachine(PlayerStateMachine stateMachine)
+    private void Start()
     {
-        this.stateMachine = stateMachine;
+        SwitchState(new PLayerTestState(this));
     }
-    void Start()
+    void start()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
