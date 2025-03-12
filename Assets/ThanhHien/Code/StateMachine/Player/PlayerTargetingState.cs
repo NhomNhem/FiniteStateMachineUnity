@@ -4,9 +4,9 @@ public class PlayerTargetingState : PlayerBaseState
 {
     private readonly int TargetingBlendTreeHash = Animator.StringToHash("TargetingBlendTree");
     private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
-    private readonly int TargetingForwardHash = Animator.StringToHash("TargetingForwardHash");
-    private readonly int TargetingRightHash = Animator.StringToHash("TargetingRightHash");
-
+    private readonly int TargetingForwardHash = Animator.StringToHash("TargetingForward"); // Sửa tên đúng
+    private readonly int TargetingRightHash = Animator.StringToHash("TargetingRight"); // Sửa tên đúng
+    private const float CrossFaceDuration = 0.1f;
     private const float AnimatorDampTime = 0.1f;
 
     public PlayerTargetingState(PlayerStateMachine stateMachine) : base(stateMachine) { }
@@ -17,7 +17,7 @@ public class PlayerTargetingState : PlayerBaseState
 
         if (stateMachine.Targeter.SelectTarget())
         {
-            stateMachine.Animator.Play(TargetingBlendTreeHash);
+            stateMachine.Animator.CrossFadeInFixedTime(TargetingBlendTreeHash, CrossFaceDuration);
         }
         else
         {
@@ -27,6 +27,12 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        if (stateMachine.InputReader.IsAttacking)
+        {
+            stateMachine.SwitchState(new PlayerAttackingState(stateMachine, 0));
+            return;
+        }
+
         if (stateMachine.Targeter.CurrentTarget == null)
         {
             stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
@@ -38,6 +44,7 @@ public class PlayerTargetingState : PlayerBaseState
 
         float speed = movement.magnitude;
         stateMachine.Animator.SetFloat(FreeLookSpeedHash, speed > 0.1f ? 1f : 0f, AnimatorDampTime, deltaTime);
+
         UpdateAnimator(deltaTime);
         FaceTarget();
     }
@@ -53,7 +60,7 @@ public class PlayerTargetingState : PlayerBaseState
         stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
     }
 
-    private void FaceTarget()
+    private new void FaceTarget()
     {
         if (stateMachine.Targeter.CurrentTarget == null) return;
 
@@ -84,25 +91,33 @@ public class PlayerTargetingState : PlayerBaseState
 
         return forward * stateMachine.InputReader.MovementValue.y + right * stateMachine.InputReader.MovementValue.x;
     }
+
     private void UpdateAnimator(float deltaTime)
     {
-        if (stateMachine.InputReader.MovementValue.y == 0)
+        if (stateMachine.Animator.HasParameter(TargetingForwardHash))
         {
-            stateMachine.Animator.SetFloat(TargetingForwardHash, 0, 0.1f, deltaTime);
+            float forwardValue = stateMachine.InputReader.MovementValue.y == 0 ? 0 : Mathf.Sign(stateMachine.InputReader.MovementValue.y);
+            stateMachine.Animator.SetFloat(TargetingForwardHash, forwardValue, 0.1f, deltaTime);
         }
-        else
+
+        if (stateMachine.Animator.HasParameter(TargetingRightHash))
         {
-            float value = stateMachine.InputReader.MovementValue.y > 0 ? 1f : -1f;
-            stateMachine.Animator.SetFloat(TargetingForwardHash, value, 0.1f, deltaTime);
+            float rightValue = stateMachine.InputReader.MovementValue.x == 0 ? 0 : Mathf.Sign(stateMachine.InputReader.MovementValue.x);
+            stateMachine.Animator.SetFloat(TargetingRightHash, rightValue, 0.1f, deltaTime);
         }
-        if (stateMachine.InputReader.MovementValue.x == 0)
+    }
+}
+
+// Thêm extension để kiểm tra parameter có tồn tại trong Animator không
+public static class AnimatorExtensions
+{
+    public static bool HasParameter(this Animator animator, int hash)
+    {
+        for (int i = 0; i < animator.parameterCount; i++)
         {
-            stateMachine.Animator.SetFloat(TargetingRightHash, 0, 0.1f, deltaTime);
+            if (animator.parameters[i].nameHash == hash)
+                return true;
         }
-        else
-        {
-            float value = stateMachine.InputReader.MovementValue.x > 0 ? 1f : -1f;
-            stateMachine.Animator.SetFloat(TargetingRightHash, value, 0.1f, deltaTime);
-        }
+        return false;
     }
 }

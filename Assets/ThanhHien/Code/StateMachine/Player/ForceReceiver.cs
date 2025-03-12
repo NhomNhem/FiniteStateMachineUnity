@@ -1,20 +1,49 @@
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ForceReceiver : MonoBehaviour
 {
-    [SerializeField] private CharacterController controller;
-    private float vertialVelocity;
-    public Vector3 Movement => Vector3.up * vertialVelocity;
+    private CharacterController controller;
+    [SerializeField] private float drag = 0.3f;
+    private Vector3 dampingVelocity;
+    private Vector3 impact;
+    private float verticalVelocity;
+
+    public Vector3 Movement => impact + Vector3.up * verticalVelocity;
+
+    private void Awake()
+    {
+
+        controller = GetComponent<CharacterController>();
+
+        if (controller == null)
+        {
+        }
+    }
+
     private void Update()
     {
-        if( vertialVelocity < 0 || controller.isGrounded)
+        if (controller == null) return; 
+
+        if (verticalVelocity < 0 || controller.isGrounded)
         {
-            vertialVelocity = Physics.gravity.y * Time.deltaTime;
+            verticalVelocity = Physics.gravity.y * Time.deltaTime;
         }
         else
         {
-            vertialVelocity += Physics.gravity.y * Time.deltaTime;
+            verticalVelocity += Physics.gravity.y * Time.deltaTime;
         }
+
+        impact = Vector3.SmoothDamp(impact, Vector3.zero, ref dampingVelocity, drag);
+    }
+
+    public void AddForce(Vector3 force)
+    {
+        impact += force;
+    }
+
+    public void ResetForce()
+    {
+        impact = Vector3.zero;
+        verticalVelocity = 0f;
     }
 }
