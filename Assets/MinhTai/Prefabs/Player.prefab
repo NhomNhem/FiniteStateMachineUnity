@@ -2337,6 +2337,19 @@ MonoBehaviour:
   <FreeLookMovementSpeed>k__BackingField: 6
   <TargetingMovementSpeed>k__BackingField: 0
   <RotationDamping>k__BackingField: 10
+  <Attacks>k__BackingField:
+  - <AnimationName>k__BackingField: Attack1
+    <TransitionDuration>k__BackingField: 0.1
+    <ComeboStateIndex>k__BackingField: 1
+    <ComeboAttackTime>k__BackingField: 0.6
+  - <AnimationName>k__BackingField: Attack2
+    <TransitionDuration>k__BackingField: 0.1
+    <ComeboStateIndex>k__BackingField: 2
+    <ComeboAttackTime>k__BackingField: 0.5
+  - <AnimationName>k__BackingField: Attack3
+    <TransitionDuration>k__BackingField: 0.2
+    <ComeboStateIndex>k__BackingField: -1
+    <ComeboAttackTime>k__BackingField: 0
 --- !u!114 &3876635583400890865
 MonoBehaviour:
   m_ObjectHideFlags: 0
