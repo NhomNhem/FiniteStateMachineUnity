@@ -415,7 +415,9 @@ MonoBehaviour:
   <Animator>k__BackingField: {fileID: 2407659787825679495}
   <Controller>k__BackingField: {fileID: 3928064726088055339}
   <ForceReceiver>k__BackingField: {fileID: 0}
+  <Agent>k__BackingField: {fileID: 0}
   <PlayerChasingRange>k__BackingField: 15
+  <MovementSpeed>k__BackingField: 0
 --- !u!114 &5171844940764909545
 MonoBehaviour:
   m_ObjectHideFlags: 0

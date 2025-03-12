@@ -26,5 +26,13 @@ public class ForceReceive : MonoBehaviour
     public void AddForce(Vector3 force)
     {
         impact += force;
+        //if(agent != null)
+        //{
+        //    agent.enabled = false;
+        //}
+    }
+    public void Jump(float jumpForce)
+    {
+        verticalVelocity += jumpForce;
     }
 }

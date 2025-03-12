@@ -14,19 +14,27 @@ public class EnemyIdleState : EnemyBaseState
     {
         stateMachine.Animator.CrossFadeInFixedTime(LoconmotionHash, CrossFadeDuration);
     }
-    public override void Tick(float detlatime)
+    public override void Tick(float deltaTime)
     {
-        Move(detlatime);
+        Move(deltaTime);
         if (IsInChaseRange())
         {
-            Debug.Log("In Range");
+            stateMachine.SwitchState(new EnemyChasingState(stateMachine));
             return;
         }
-        stateMachine.Animator.SetFloat(SpeedHash, 0f, AnimatorDampTime, detlatime);
+        MoveToPlayer(deltaTime);
+        stateMachine.Animator.SetFloat(SpeedHash, 0f, AnimatorDampTime, deltaTime);
     }
     public override void Exit()
     {
-
+        stateMachine.Agent.ResetPath();
+        stateMachine.Agent.velocity = Vector3.zero;
+    }
+    private void MoveToPlayer(float deltaTime)
+    {
+       stateMachine.Agent.destination = stateMachine.Player.transform.position;
+        Move(stateMachine.Agent. desiredVelocity.normalized* stateMachine.MovementSpeed,deltaTime);
+        stateMachine.Agent.velocity = stateMachine.Controller.velocity;
     }
 
 }
