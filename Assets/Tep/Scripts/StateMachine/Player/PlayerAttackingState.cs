@@ -6,7 +6,7 @@ public class PlayerAttackingState : PlayerBaseState
     private float previosFrameTime;
 
     private Attack attack;
-
+    private bool alreadyAppliedForce;
     public PlayerAttackingState(PlayerStateMachine stateMachine, int attackIndex) : base(stateMachine)
     {
         attack = stateMachine.Attacks[attackIndex];
@@ -26,6 +26,10 @@ public class PlayerAttackingState : PlayerBaseState
 
         if (normalizedTime >= previosFrameTime && normalizedTime < 1f)
         {
+            if(normalizedTime >= attack.ForceTime)
+            {
+                TryApplyForce();
+            }
             if (stateMachine.InputReader.IsAttacking)
             {
                 TryComboAttack(normalizedTime);
@@ -33,7 +37,14 @@ public class PlayerAttackingState : PlayerBaseState
         }
         else
         {
-            // Go back to locomotion
+           if(stateMachine.Targeter.CurrentTarget != null)
+            {
+                stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+            }
+            else
+            {
+                stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+            }
         }
 
         previosFrameTime = normalizedTime;
@@ -59,7 +70,12 @@ public class PlayerAttackingState : PlayerBaseState
            )
         );
     }
-
+    private void TryApplyForce()
+    {
+        if(alreadyAppliedForce) { return; }
+        stateMachine.ForceReceive.AddForce(stateMachine.transform.forward * attack.Force);
+        alreadyAppliedForce = true;
+    }
     private float GetNormalizedTime()
     {
         AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);

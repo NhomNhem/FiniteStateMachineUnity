@@ -453,6 +453,37 @@ Transform:
   - {fileID: 612653333609452677}
   m_Father: {fileID: 7879047930896433116}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1477476413692359702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8878215924949294495}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8878215924949294495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477476413692359702}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3834132398800862429}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1727289747255379595
 GameObject:
   m_ObjectHideFlags: 0
@@ -1989,6 +2020,7 @@ Transform:
   - {fileID: 20562655287573496}
   - {fileID: 8805536650384412347}
   - {fileID: 1311013529977933155}
+  - {fileID: 8878215924949294495}
   m_Father: {fileID: 5936267010286760459}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7182522732438150473
@@ -2342,14 +2374,20 @@ MonoBehaviour:
     <TransitionDuration>k__BackingField: 0.1
     <ComeboStateIndex>k__BackingField: 1
     <ComeboAttackTime>k__BackingField: 0.6
+    <ForceTime>k__BackingField: 0.35
+    <Force>k__BackingField: 15
   - <AnimationName>k__BackingField: Attack2
     <TransitionDuration>k__BackingField: 0.1
     <ComeboStateIndex>k__BackingField: 2
     <ComeboAttackTime>k__BackingField: 0.5
+    <ForceTime>k__BackingField: 0.35
+    <Force>k__BackingField: 15
   - <AnimationName>k__BackingField: Attack3
     <TransitionDuration>k__BackingField: 0.2
     <ComeboStateIndex>k__BackingField: -1
-    <ComeboAttackTime>k__BackingField: 0
+    <ComeboAttackTime>k__BackingField: 0.2
+    <ForceTime>k__BackingField: 0.35
+    <Force>k__BackingField: 20
 --- !u!114 &3876635583400890865
 MonoBehaviour:
   m_ObjectHideFlags: 0
