@@ -16,8 +16,11 @@ public class PlayerAttackingState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.Animator.CrossFadeInFixedTime (attack.AnimationName, attack.TransitionDuration);
+        stateMachine.Weapon.SetAttack(attack.Damage);
+
+        stateMachine.Animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
     }
+
     public override void Tick(float deltaTime)
     {
         Move(deltaTime);

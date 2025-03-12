@@ -5,21 +5,14 @@ using UnityEngine.UI;
 public class WeaponHandler : MonoBehaviour
 {
 
-    [SerializeField] private List<GameObject> weaponColliders; // Danh sách vùng va chạm của vũ khí
+    [SerializeField] private GameObject weaponLogic;
 
     public void EnableWeapon()
     {
-        foreach (GameObject collider in weaponColliders)
-        {
-            collider.SetActive(true);
-        }
+        weaponLogic.SetActive(true);
     }
-
     public void DisableWeapon()
     {
-        foreach (GameObject collider in weaponColliders)
-        {
-            collider.SetActive(false);
-        }
+        weaponLogic.SetActive(false);
     }
 }
