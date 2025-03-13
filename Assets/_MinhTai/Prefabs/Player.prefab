@@ -3777,7 +3777,7 @@ MonoBehaviour:
     <ComeboAttackTime>k__BackingField: 0.5
     <ForceTime>k__BackingField: 0
     <Force>k__BackingField: 0
-    <Damage>k__BackingField: 10
+    <Damage>k__BackingField: 15
     <Knockback>k__BackingField: 4
   - <AnimationName>k__BackingField: Attack3
     <TransitionDuration>k__BackingField: 0.2
@@ -3785,7 +3785,7 @@ MonoBehaviour:
     <ComeboAttackTime>k__BackingField: 0
     <ForceTime>k__BackingField: 0
     <Force>k__BackingField: 0
-    <Damage>k__BackingField: 12
+    <Damage>k__BackingField: 20
     <Knockback>k__BackingField: 5
 --- !u!114 &95995969411043569
 MonoBehaviour:

@@ -93,8 +93,8 @@ MonoBehaviour:
       LookAtTarget: {fileID: 0}
       CustomLookAtTarget: 0
   DefaultBlend:
-    Style: 1
-    Time: 0.5
+    Style: 2
+    Time: 0.25
     CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -121,6 +121,24 @@ MonoBehaviour:
   - Hash: 846512302
     HashOfParent: 585382737
   - Hash: -479991077
+    HashOfParent: 756556552
+  - Hash: 168036699
+    HashOfParent: -479991077
+  - Hash: 641460239
+    HashOfParent: -479991077
+  - Hash: 1873755382
+    HashOfParent: -479991077
+  - Hash: 1811258716
+    HashOfParent: -479991077
+  - Hash: -274583130
+    HashOfParent: 756556552
+  - Hash: 1990942748
+    HashOfParent: 756556552
+  - Hash: 28070026
+    HashOfParent: 756556552
+  - Hash: -1063883918
+    HashOfParent: 756556552
+  - Hash: -946407516
     HashOfParent: 756556552
   m_LegacyLookAt: {fileID: 0}
   m_LegacyFollow: {fileID: 0}
@@ -152,7 +170,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7029582496463524946}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000038211816, y: 0.000000016938044, z: -0.0000000043235535, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.31, z: -10.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -184,7 +202,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 1198375058771861023}
     CustomLookAtTarget: 1
   Lens:
-    FieldOfView: 60.000004
+    FieldOfView: 58.701153
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -202,7 +220,7 @@ MonoBehaviour:
       Curvature: {x: 2, y: 11}
       BarrelClipping: 0.25
       Anamorphism: 0
-  BlendHint: 0
+  BlendHint: 2
 --- !u!114 &2315703859924620108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TrackerSettings:
-    BindingMode: 4
+    BindingMode: 1
     PositionDamping: {x: 1, y: 1, z: 1}
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
@@ -245,7 +263,7 @@ MonoBehaviour:
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 0.5, y: 0.5}
+  Damping: {x: 0, y: 0.1}
   Lookahead:
     Enabled: 0
     Time: 0
@@ -298,7 +316,7 @@ Transform:
   m_GameObject: {fileID: 8951602536208372588}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000038211816, y: -0.000000016938044, z: 0.0000000043235535, w: 1}
-  m_LocalPosition: {x: -0.00000033876088, y: -0.00000076423635, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -355,8 +373,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9167894917910454315}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.03929248, y: -0.01163887, z: 0.0004577046, w: 0.9991599}
-  m_LocalPosition: {x: 0, y: 1.81, z: -6.67}
+  m_LocalRotation: {x: -0.07276896, y: 0.27766773, z: 0.021098372, w: 0.9576848}
+  m_LocalPosition: {x: -2.7802544, y: 0.5665747, z: -4.842971}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -404,7 +422,7 @@ MonoBehaviour:
       Curvature: {x: 2, y: 11}
       BarrelClipping: 0.25
       Anamorphism: 0
-  BlendHint: 0
+  BlendHint: 2
 --- !u!114 &2398064679149863753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -439,7 +457,7 @@ MonoBehaviour:
     SplineCurvature: 0.2
   RecenteringTarget: 2
   HorizontalAxis:
-    Value: 0
+    Value: 33.673653
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -449,7 +467,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   VerticalAxis:
-    Value: 17.5
+    Value: -9.729712
     Center: 17.5
     Range: {x: -10, y: 45}
     Wrap: 0
@@ -552,7 +570,7 @@ MonoBehaviour:
         LegacyInput: 
         LegacyGain: 1
         CancelDeltaTime: 0
-      InputValue: 0
+      InputValue: -0
       Driver:
         AccelTime: 0.2
         DecelTime: 0.2
@@ -565,7 +583,7 @@ MonoBehaviour:
         LegacyInput: 
         LegacyGain: 1
         CancelDeltaTime: 0
-      InputValue: 0
+      InputValue: -0
       Driver:
         AccelTime: 0
         DecelTime: 0
@@ -1459,6 +1477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 6175694854649609391}
+  agent: {fileID: 0}
   drap: 0.05
 --- !u!95 &6115182974055014177 stripped
 Animator:

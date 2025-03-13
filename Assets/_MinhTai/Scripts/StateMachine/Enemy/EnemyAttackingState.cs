@@ -11,6 +11,7 @@ public class EnemyAttackingState : EnemyBaseState
 
     public override void Enter()
     {
+
         stateMachine.Weapon.SetAttack(stateMachine.AttackDamage, stateMachine.AttackKnockback);
         
         stateMachine.Animator.CrossFadeInFixedTime(AttackHash, TransitionDuration);
@@ -21,6 +22,8 @@ public class EnemyAttackingState : EnemyBaseState
         {
             stateMachine.SwitchState(new EnemyIdleState(stateMachine));
         }
+
+        FacePlayer();
     }
 
     public override void Exit() { }
