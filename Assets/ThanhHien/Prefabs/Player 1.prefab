@@ -137,9 +137,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 881676186369495755}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandThumb4
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,9 +168,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2200978654276873166}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightToeBase
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -294,9 +294,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8986530591920474673}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightFoot
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -454,9 +454,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3473914647694642638}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandMiddle4
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -485,9 +485,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6560157150810744856}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandRing2
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -894,9 +894,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3587655687070320415}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandRing3
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -926,9 +926,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3209254384825095895}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandPinky3
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -996,7 +996,9 @@ GameObject:
   - component: {fileID: 3695063564953589805}
   - component: {fileID: 2423550470801672218}
   - component: {fileID: 6598429856379247332}
-  m_Layer: 0
+  - component: {fileID: 5978967544468486646}
+  - component: {fileID: 3720515714710264771}
+  m_Layer: 6
   m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1038,9 +1040,11 @@ MonoBehaviour:
   <InputReader>k__BackingField: {fileID: 3897004204739984676}
   <Controller>k__BackingField: {fileID: 3695063564953589805}
   <Animator>k__BackingField: {fileID: 2927257829725674961}
-  <Targeter>k__BackingField: {fileID: 3001711916678681814}
+  <Targeter>k__BackingField: {fileID: 0}
   <ForceReceiver>k__BackingField: {fileID: 0}
   <Weapon>k__BackingField: {fileID: 3131302150555557722}
+  <Health>k__BackingField: {fileID: 6598429856379247332}
+  <Ragdoll>k__BackingField: {fileID: 5978967544468486646}
   <FreeLookMovementSpeed>k__BackingField: 3.33
   <RotationDamping>k__BackingField: 10
   <Attacks>k__BackingField:
@@ -1051,6 +1055,7 @@ MonoBehaviour:
     <ForceTime>k__BackingField: 0.35
     <Force>k__BackingField: 15
     <Damage>k__BackingField: 10
+    <Knockback>k__BackingField: 0
   - <AnimationName>k__BackingField: Attack2
     <TransitionDuration>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: 2
@@ -1058,6 +1063,7 @@ MonoBehaviour:
     <ForceTime>k__BackingField: 0.35
     <Force>k__BackingField: 15
     <Damage>k__BackingField: 15
+    <Knockback>k__BackingField: 0
   - <AnimationName>k__BackingField: Attack3
     <TransitionDuration>k__BackingField: 0.2
     <ComboStateIndex>k__BackingField: -1
@@ -1065,6 +1071,7 @@ MonoBehaviour:
     <ForceTime>k__BackingField: 0.35
     <Force>k__BackingField: 20
     <Damage>k__BackingField: 20
+    <Knockback>k__BackingField: 0
 --- !u!114 &3897004204739984676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1150,6 +1157,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!114 &5978967544468486646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2529661503182395655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d3010a647889b41b54022c3fe05c81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 2927257829725674961}
+  controller: {fileID: 3695063564953589805}
+--- !u!54 &3720515714710264771
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2529661503182395655}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2556324374876994631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,9 +1239,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1524231143187951728}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightArm
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1255,9 +1303,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7465661954951471448}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightToe_End
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1318,9 +1366,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2406381939474732670}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandThumb2
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1350,9 +1398,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4860380957337985323}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightLeg
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1510,9 +1558,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5470884166096674111}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandPinky2
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1542,9 +1590,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1375258236731542763}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightUpLeg
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1765,9 +1813,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8139211898169379761}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightShoulder
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1797,9 +1845,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7337428492389403352}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandRing1
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1923,9 +1971,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4341730261165211162}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandPinky4
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2017,9 +2065,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6292479458922021968}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandIndex1
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2080,9 +2128,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1348295802122224341}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandMiddle3
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2303,9 +2351,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2793280358838625011}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandIndex4
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2334,9 +2382,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2993092492227165902}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHand
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2498,9 +2546,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2372889465860028491}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandPinky1
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2564,9 +2612,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9207907599120320210}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandIndex3
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2596,9 +2644,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8102769083934208843}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandMiddle2
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2660,9 +2708,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7000093009542480940}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandMiddle1
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3422,9 +3470,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 188322826652058971}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandIndex2
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3553,9 +3601,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5309288150859743138}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandThumb1
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3585,9 +3633,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7446669691464160555}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandRing4
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3679,9 +3727,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4466689915675824759}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandThumb3
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3711,9 +3759,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2155563610144995283}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightForeArm
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

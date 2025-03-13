@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7919650010826483357}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:Neck
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 7377566359159017447}
   m_Father: {fileID: 3643588494474848992}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -8.463464, y: 4.276657, z: 1.1037022}
 --- !u!1 &92649057409150916
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,9 +41,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5860038968465278070}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:LeftForeArm
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +63,7 @@ Transform:
   m_Children:
   - {fileID: 7906120659033485132}
   m_Father: {fileID: 7483261809153452471}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 10.0516815, y: -18.847103, z: -33.36551}
 --- !u!1 &384263208042502680
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,9 +73,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2305270924095581223}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightToeBase
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,7 @@ Transform:
   m_Children:
   - {fileID: 6350112963401124997}
   m_Father: {fileID: 4608725468090293491}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 47.62024, y: -19.276897, z: -24.3869}
 --- !u!1 &400798440939064106
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,12 +105,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 746782144190296126}
+  - component: {fileID: 9015662492248907529}
   - component: {fileID: 7261585557782189588}
   - component: {fileID: 3073001143476780282}
   - component: {fileID: 5816313943446142337}
   - component: {fileID: 8615168677144974544}
   - component: {fileID: 2960616134070743756}
   - component: {fileID: 3635609904387296677}
+  - component: {fileID: 1667605158185795725}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -135,6 +137,28 @@ Transform:
   - {fileID: 3351493841212850530}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!195 &9015662492248907529
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400798440939064106}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 1
+  m_Acceleration: 0
+  avoidancePriority: 50
+  m_AngularSpeed: 0
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!95 &7261585557782189588
 Animator:
   serializedVersion: 7
@@ -222,7 +246,16 @@ MonoBehaviour:
   <Animator>k__BackingField: {fileID: 7261585557782189588}
   <Controller>k__BackingField: {fileID: 3073001143476780282}
   <ForceReceiver>k__BackingField: {fileID: 3635609904387296677}
+  <Agent>k__BackingField: {fileID: 9015662492248907529}
+  <Weapon>k__BackingField: {fileID: 7999101630674442455}
+  <Health>k__BackingField: {fileID: 8615168677144974544}
+  <Target>k__BackingField: {fileID: 0}
+  <Ragdoll>k__BackingField: {fileID: 0}
+  <MovementSpeed>k__BackingField: 3
   <PlayerChasingRange>k__BackingField: 10
+  <AttackRange>k__BackingField: 1.5
+  <AttackDamage>k__BackingField: 20
+  <AttackKnockback>k__BackingField: 20
 --- !u!114 &3635609904387296677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,6 +269,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drag: 0.3
+  agent: {fileID: 9015662492248907529}
+--- !u!114 &1667605158185795725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400798440939064106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d77c9ef49f91254285a0b825904153e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponLogic: {fileID: 2586069598355908446}
 --- !u!1 &409152333611223174
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,9 +292,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6451830925788945234}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandIndex4
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -276,9 +323,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1555471373804164327}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandPinky3
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -298,7 +345,7 @@ Transform:
   m_Children:
   - {fileID: 7185539274454250847}
   m_Father: {fileID: 9009780210767955411}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.05020137, y: -0.016000876, z: -35.338154}
 --- !u!1 &712988467114111811
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,9 +355,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7906120659033485132}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:LeftHand
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,7 +374,8 @@ Transform:
   m_LocalPosition: {x: 1.02140514e-16, y: 0.26753432, z: -2.842171e-16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2800454364233136165}
   m_Father: {fileID: 5860038968465278070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &729820146539186210
@@ -339,9 +387,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8158610611632730573}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandIndex3
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -361,7 +409,7 @@ Transform:
   m_Children:
   - {fileID: 6451830925788945234}
   m_Father: {fileID: 318609526778184324}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -16.183872, y: -8.195686, z: 11.701724}
 --- !u!1 &957464230751189030
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,9 +419,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3191501094375017365}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandThumb3
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -393,7 +441,7 @@ Transform:
   m_Children:
   - {fileID: 3802516845267818951}
   m_Father: {fileID: 4931015806176100882}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -14.836533, y: 13.574881, z: -10.784126}
 --- !u!1 &1160982370788702338
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,9 +451,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1590337301740419707}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:LeftShoulder
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -425,7 +473,7 @@ Transform:
   m_Children:
   - {fileID: 7483261809153452471}
   m_Father: {fileID: 3643588494474848992}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 72.807526, y: -133.84491, z: -61.197437}
 --- !u!1 &1309398843921913742
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,9 +483,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3328695329701233991}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHand
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -459,7 +507,7 @@ Transform:
   - {fileID: 2812010983448998631}
   - {fileID: 4809381758181961329}
   m_Father: {fileID: 1447648788063948583}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -5.7654524, y: -4.678696, z: -21.506264}
 --- !u!1 &2017979805691277474
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,9 +517,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1441190260527056012}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:LeftUpLeg
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -491,7 +539,7 @@ Transform:
   m_Children:
   - {fileID: 6105447930254285906}
   m_Father: {fileID: 8961778153047522800}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -23.30016, y: -9.681999, z: 163.21692}
 --- !u!1 &2051000067327055307
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,9 +549,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 318609526778184324}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandIndex2
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -523,7 +571,7 @@ Transform:
   m_Children:
   - {fileID: 8158610611632730573}
   m_Father: {fileID: 5089370632058190889}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 36.3932, y: 0.94203484, z: 9.768959}
 --- !u!1 &2150964937201776783
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,9 +581,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6105447930254285906}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:LeftLeg
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -555,7 +603,7 @@ Transform:
   m_Children:
   - {fileID: 1665447525931132094}
   m_Father: {fileID: 1441190260527056012}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -38.337524, y: 15.755655, z: -2.447281}
 --- !u!1 &2287068468035260235
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,9 +613,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5709208229000547081}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:HeadTop_End
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -596,9 +644,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8662208139976412771}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:Spine
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -618,7 +666,104 @@ Transform:
   m_Children:
   - {fileID: 2822600396149037707}
   m_Father: {fileID: 8961778153047522800}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15.402185, y: 0.1468973, z: 1.0655396}
+--- !u!1 &2586069598355908446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2800454364233136165}
+  - component: {fileID: 72046601394265900}
+  - component: {fileID: 7999101630674442455}
+  - component: {fileID: 97555795716113704}
+  m_Layer: 0
+  m_Name: WeaponLogic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2800454364233136165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586069598355908446}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.30101487, y: -0.096168034, z: 0.9306883, w: 0.18428533}
+  m_LocalPosition: {x: 0.139, y: 0.176, z: -0.009}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7906120659033485132}
+  m_LocalEulerAnglesHint: {x: 16.855, y: 33.258, z: 162.667}
+--- !u!136 &72046601394265900
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586069598355908446}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.17
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7999101630674442455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586069598355908446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae7fc62d3dc9cc04a8a1d098b6f5a199, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCollider: {fileID: 3073001143476780282}
+--- !u!54 &97555795716113704
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586069598355908446}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2670981241158798690
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,9 +773,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7928823774662543905}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:LeftToeBase
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -650,7 +795,7 @@ Transform:
   m_Children:
   - {fileID: 1125298156459528183}
   m_Father: {fileID: 1665447525931132094}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 54.172493, y: -5.2648973, z: 15.051293}
 --- !u!1 &2974767520890890116
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,9 +930,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2812010983448998631}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandPinky1
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -807,7 +952,7 @@ Transform:
   m_Children:
   - {fileID: 9009780210767955411}
   m_Father: {fileID: 3328695329701233991}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 20.43615, y: -110.48121, z: -44.581615}
 --- !u!1 &3340849862392985824
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,9 +962,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5089370632058190889}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandIndex1
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -839,7 +984,7 @@ Transform:
   m_Children:
   - {fileID: 318609526778184324}
   m_Father: {fileID: 3328695329701233991}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 26.94176, y: 30.959723, z: 29.909872}
 --- !u!1 &3619618313400242863
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,9 +994,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9009780210767955411}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandPinky2
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -871,7 +1016,7 @@ Transform:
   m_Children:
   - {fileID: 1555471373804164327}
   m_Father: {fileID: 2812010983448998631}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -2.030214, y: 0.50851583, z: -36.156696}
 --- !u!1 &3862795960571312329
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,9 +1026,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7260348789494523274}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightArm
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -903,7 +1048,7 @@ Transform:
   m_Children:
   - {fileID: 1447648788063948583}
   m_Father: {fileID: 6176940673017627410}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 36.21124, y: -21.38751, z: -4.8927493}
 --- !u!1 &4009574893911422070
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,9 +1058,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6176940673017627410}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightShoulder
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -935,7 +1080,7 @@ Transform:
   m_Children:
   - {fileID: 7260348789494523274}
   m_Father: {fileID: 3643588494474848992}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 73.4561, y: 150.44286, z: 71.855415}
 --- !u!1 &4071617532625101957
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,9 +1090,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8961778153047522800}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:Hips
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -969,7 +1114,7 @@ Transform:
   - {fileID: 5105727799954721487}
   - {fileID: 8662208139976412771}
   m_Father: {fileID: 746782144190296126}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.50115466, y: -0.6915364, z: -3.6835985}
 --- !u!1 &4173188651331343354
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,9 +1124,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3802516845267818951}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandThumb4
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1010,9 +1155,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4608725468090293491}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightFoot
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1032,7 +1177,7 @@ Transform:
   m_Children:
   - {fileID: 2305270924095581223}
   m_Father: {fileID: 8900961992820782165}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 56.011814, y: -10.578008, z: -16.126114}
 --- !u!1 &5381673344305534600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,9 +1187,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2822600396149037707}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:Spine1
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1064,7 +1209,7 @@ Transform:
   m_Children:
   - {fileID: 3643588494474848992}
   m_Father: {fileID: 8662208139976412771}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 13.813135, y: 0.28376436, z: 2.1763043}
 --- !u!1 &5460241582818255883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,9 +1219,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4931015806176100882}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandThumb2
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1096,7 +1241,7 @@ Transform:
   m_Children:
   - {fileID: 3191501094375017365}
   m_Father: {fileID: 4809381758181961329}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -13.465191, y: 9.984379, z: -17.94388}
 --- !u!1 &5508823790044415344
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,9 +1251,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1447648788063948583}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightForeArm
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1128,7 +1273,7 @@ Transform:
   m_Children:
   - {fileID: 3328695329701233991}
   m_Father: {fileID: 7260348789494523274}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 14.420937, y: -9.167173, z: 68.72022}
 --- !u!1 &5610133147624345356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,9 +1283,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7483261809153452471}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:LeftArm
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1160,7 +1305,7 @@ Transform:
   m_Children:
   - {fileID: 5860038968465278070}
   m_Father: {fileID: 1590337301740419707}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 26.616898, y: 31.863592, z: -14.896847}
 --- !u!1 &5819516662545431019
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,9 +1315,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7377566359159017447}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:Head
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1192,7 +1337,7 @@ Transform:
   m_Children:
   - {fileID: 5709208229000547081}
   m_Father: {fileID: 7919650010826483357}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.4373908, y: -2.3384728, z: -2.115671}
 --- !u!1 &6094787415953636923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,9 +1347,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1665447525931132094}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:LeftFoot
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1224,7 +1369,7 @@ Transform:
   m_Children:
   - {fileID: 7928823774662543905}
   m_Father: {fileID: 6105447930254285906}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 59.43661, y: -1.1969798, z: 14.3439865}
 --- !u!1 &6400171201272256428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,9 +1379,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6350112963401124997}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightToe_End
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1265,9 +1410,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7185539274454250847}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandPinky4
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1296,9 +1441,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1125298156459528183}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:LeftToe_End
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1327,9 +1472,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5105727799954721487}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightUpLeg
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1349,7 +1494,7 @@ Transform:
   m_Children:
   - {fileID: 8900961992820782165}
   m_Father: {fileID: 8961778153047522800}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -32.520153, y: 13.242149, z: -165.43433}
 --- !u!1 &8384409547665807303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1359,9 +1504,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8900961992820782165}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightLeg
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1381,7 +1526,7 @@ Transform:
   m_Children:
   - {fileID: 4608725468090293491}
   m_Father: {fileID: 5105727799954721487}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -43.825466, y: 6.5198736, z: -2.7408097}
 --- !u!1 &8741889863081854034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,9 +1536,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3643588494474848992}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:Spine2
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1415,7 +1560,7 @@ Transform:
   - {fileID: 7919650010826483357}
   - {fileID: 6176940673017627410}
   m_Father: {fileID: 2822600396149037707}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 17.276608, y: 0.31147134, z: 2.0812008}
 --- !u!1 &8989641910648629273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1425,9 +1570,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4809381758181961329}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mixamorig:RightHandThumb1
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1447,4 +1592,4 @@ Transform:
   m_Children:
   - {fileID: 4931015806176100882}
   m_Father: {fileID: 3328695329701233991}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 20.562954, y: 59.550396, z: 59.27687}

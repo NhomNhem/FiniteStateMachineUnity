@@ -2,11 +2,13 @@
 
 public class PlayerTargetingState : PlayerBaseState
 {
+    private Vector2 dodgeDirectionInput;
+    private float remainingDodgeTime;
     private readonly int TargetingBlendTreeHash = Animator.StringToHash("TargetingBlendTree");
     private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
-    private readonly int TargetingForwardHash = Animator.StringToHash("TargetingForward"); // Sửa tên đúng
-    private readonly int TargetingRightHash = Animator.StringToHash("TargetingRight"); // Sửa tên đúng
-    private const float CrossFaceDuration = 0.1f;
+    private readonly int TargetingForwardHash = Animator.StringToHash("TargetingForward");
+    private readonly int TargetingRightHash = Animator.StringToHash("TargetingRight");
+    private const float CrossFadeDuration = 0.1f;
     private const float AnimatorDampTime = 0.1f;
 
     public PlayerTargetingState(PlayerStateMachine stateMachine) : base(stateMachine) { }
@@ -15,9 +17,12 @@ public class PlayerTargetingState : PlayerBaseState
     {
         stateMachine.InputReader.TargetEvent += OnTarget;
 
+        stateMachine.InputReader.DogdeEvent += OnDodge;
+
+
         if (stateMachine.Targeter.SelectTarget())
         {
-            stateMachine.Animator.CrossFadeInFixedTime(TargetingBlendTreeHash, CrossFaceDuration);
+            stateMachine.Animator.CrossFadeInFixedTime(TargetingBlendTreeHash, CrossFadeDuration);
         }
         else
         {
@@ -32,14 +37,18 @@ public class PlayerTargetingState : PlayerBaseState
             stateMachine.SwitchState(new PlayerAttackingState(stateMachine, 0));
             return;
         }
-
-        if (stateMachine.Targeter.CurrentTarget == null)
+        if (stateMachine.InputReader.IsBlocking)
+        {
+            stateMachine.SwitchState(new PlayerBlockState(stateMachine));
+            return;
+        }
+        if (stateMachine.Targeter.CurrentTarget == null)   
         {
             stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
             return;
         }
 
-        Vector3 movement = CalculateMovement();
+        Vector3 movement = CalculateMovement(deltaTime);
         Move(movement * stateMachine.FreeLookMovementSpeed, deltaTime);
 
         float speed = movement.magnitude;
@@ -52,14 +61,19 @@ public class PlayerTargetingState : PlayerBaseState
     public override void Exit()
     {
         stateMachine.InputReader.TargetEvent -= OnTarget;
+        stateMachine.InputReader.DogdeEvent -= OnDodge;
     }
 
     private void OnTarget()
     {
         stateMachine.Targeter.Cancel();
         stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+        remainingDodgeTime = stateMachine.DodgetDuration;
     }
-
+    private void OnDodge()
+    {
+    
+    }
     private new void FaceTarget()
     {
         if (stateMachine.Targeter.CurrentTarget == null) return;
@@ -78,8 +92,20 @@ public class PlayerTargetingState : PlayerBaseState
         }
     }
 
-    private Vector3 CalculateMovement()
+    private Vector3 CalculateMovement(float deltaTime)
     {
+        Vector3 movement = new Vector3();
+        if(remainingDodgeTime > 0f )
+        {
+            movement += stateMachine.transform.right * dodgeDirectionInput.x * stateMachine.DodgetLength / stateMachine.DodgetDuration;
+            movement += stateMachine.transform.forward * dodgeDirectionInput.y * stateMachine.DodgetLength / stateMachine.DodgetDuration;
+
+            remainingDodgeTime -= deltaTime;
+            if(remainingDodgeTime <0)
+            {
+                remainingDodgeTime = 0;
+            }
+        }
         Vector3 forward = stateMachine.MainCameraTransform.forward;
         Vector3 right = stateMachine.MainCameraTransform.right;
 
@@ -97,18 +123,17 @@ public class PlayerTargetingState : PlayerBaseState
         if (stateMachine.Animator.HasParameter(TargetingForwardHash))
         {
             float forwardValue = stateMachine.InputReader.MovementValue.y == 0 ? 0 : Mathf.Sign(stateMachine.InputReader.MovementValue.y);
-            stateMachine.Animator.SetFloat(TargetingForwardHash, forwardValue, 0.1f, deltaTime);
+            stateMachine.Animator.SetFloat(TargetingForwardHash, forwardValue, AnimatorDampTime, deltaTime);
         }
 
         if (stateMachine.Animator.HasParameter(TargetingRightHash))
         {
             float rightValue = stateMachine.InputReader.MovementValue.x == 0 ? 0 : Mathf.Sign(stateMachine.InputReader.MovementValue.x);
-            stateMachine.Animator.SetFloat(TargetingRightHash, rightValue, 0.1f, deltaTime);
+            stateMachine.Animator.SetFloat(TargetingRightHash, rightValue, AnimatorDampTime, deltaTime);
         }
     }
 }
 
-// Thêm extension để kiểm tra parameter có tồn tại trong Animator không
 public static class AnimatorExtensions
 {
     public static bool HasParameter(this Animator animator, int hash)

@@ -690,6 +690,10 @@ PrefabInstance:
       value: 18.34667
       objectReference: {fileID: 0}
     - target: {fileID: 4097118065977518033, guid: 0ef78b07293d5ac4e852f9b36cb609f4, type: 3}
+      propertyPath: <Health>k__BackingField
+      value: 
+      objectReference: {fileID: 7302852946291736695}
+    - target: {fileID: 4097118065977518033, guid: 0ef78b07293d5ac4e852f9b36cb609f4, type: 3}
       propertyPath: <Targeter>k__BackingField
       value: 
       objectReference: {fileID: 6203980818617515655}
@@ -697,6 +701,18 @@ PrefabInstance:
       propertyPath: <ForceReceiver>k__BackingField
       value: 
       objectReference: {fileID: 14496011667597405}
+    - target: {fileID: 4097118065977518033, guid: 0ef78b07293d5ac4e852f9b36cb609f4, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[0].<Knockback>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4097118065977518033, guid: 0ef78b07293d5ac4e852f9b36cb609f4, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[1].<Knockback>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4097118065977518033, guid: 0ef78b07293d5ac4e852f9b36cb609f4, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[2].<Knockback>k__BackingField
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7124293512513237593, guid: 0ef78b07293d5ac4e852f9b36cb609f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0805073
@@ -765,6 +781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drag: 0.1
+  agent: {fileID: 0}
 --- !u!4 &2495662254998171284 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2047160256835318791, guid: 0ef78b07293d5ac4e852f9b36cb609f4, type: 3}
@@ -784,5 +801,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47a1427b8516ed5498f2b12e6b8d8e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7302852946291736695 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6598429856379247332, guid: 0ef78b07293d5ac4e852f9b36cb609f4, type: 3}
+  m_PrefabInstance: {fileID: 4524612331517467283}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2148656059942273940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4824fc09a516b5e428b6720c1510c3ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

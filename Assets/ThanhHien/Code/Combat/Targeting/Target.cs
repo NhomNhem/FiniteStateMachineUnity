@@ -9,4 +9,4 @@ public class Target : MonoBehaviour
     {
         OnDestroyed?.Invoke(this);
     }
-}
+} 

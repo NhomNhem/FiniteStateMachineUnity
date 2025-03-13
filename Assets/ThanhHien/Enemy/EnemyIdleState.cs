@@ -19,9 +19,12 @@ public class EnemyIdleState : EnemyBaseState
         Move(detlatime);
         if(IsInChaseRange())
         {
-            Debug.Log("In Range");
+            stateMachine.SwitchState(new EnemyChasingState(stateMachine));
             return;
         }
+
+        FacePlayer();
+
         stateMachine.Animator.SetFloat(SpeedHash, 0f, AnimatorDampTime, detlatime);
     }
     public override void Exit()
