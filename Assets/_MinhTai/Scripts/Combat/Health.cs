@@ -7,6 +7,8 @@ public class Health : MonoBehaviour
 
     private int health; // Máu hiện tại
 
+    private bool isInvulnerable; // Vô hại
+
     public event Action OnTakeDamage;
 
     public event Action OnDie;
@@ -16,9 +18,16 @@ public class Health : MonoBehaviour
         health = maxHealth;
     }
 
+    public void SetInvulnerable(bool invulnerable)
+    {
+        this.isInvulnerable = invulnerable;
+    }
+
     public void DealDamage(int damage)
     {
         if (health == 0) { return; }
+
+        if (isInvulnerable) { return; }
 
         health = Mathf.Max(health - damage, 0);
 
