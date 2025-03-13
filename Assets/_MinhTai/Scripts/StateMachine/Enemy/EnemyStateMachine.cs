@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyStateMachine : StateMachine
 {
@@ -8,6 +9,10 @@ public class EnemyStateMachine : StateMachine
 
     [field: SerializeField] public ForceReceive ForceReceive { get; private set; }
 
+    [field: SerializeField] public NavMeshAgent Agent { get; private set; }
+
+    [field: SerializeField] public float MovementSpeed { get; private set; }
+
     [field: SerializeField] public float PlayerChasingRange { get; private set; }
 
     public GameObject Player { get; private set; }
@@ -15,6 +20,9 @@ public class EnemyStateMachine : StateMachine
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+
+        Agent.updatePosition = false;
+        Agent.updateRotation = false;
 
         SwitchState(new EnemyIdleState(this));
     }

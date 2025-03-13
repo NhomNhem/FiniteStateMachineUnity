@@ -1482,6 +1482,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6793977769871237863}
+  - component: {fileID: 4634242369589658097}
   - component: {fileID: 3048842677281206009}
   - component: {fileID: 5786284200782422708}
   - component: {fileID: 8847506970440137266}
@@ -1512,6 +1513,28 @@ Transform:
   - {fileID: 2910234600333450106}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!195 &4634242369589658097
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5430104454577671391}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 2
+  m_Acceleration: 0
+  avoidancePriority: 50
+  m_AngularSpeed: 0
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!143 &3048842677281206009
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1552,6 +1575,8 @@ MonoBehaviour:
   <Animator>k__BackingField: {fileID: 1591732358196833342}
   <Controller>k__BackingField: {fileID: 3048842677281206009}
   <ForceReceive>k__BackingField: {fileID: 4969115865663720091}
+  <Agent>k__BackingField: {fileID: 4634242369589658097}
+  <MovementSpeed>k__BackingField: 3
   <PlayerChasingRange>k__BackingField: 10
 --- !u!114 &8847506970440137266
 MonoBehaviour:
