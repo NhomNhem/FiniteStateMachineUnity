@@ -17,6 +17,8 @@ public class EnemyStateMachine : StateMachine
 
     [field: SerializeField] public Target Target { get; private set; }
 
+    [field: SerializeField] public Ragdoll Ragdoll { get; private set; }
+
     [field: SerializeField] public float MovementSpeed { get; private set; }
 
     [field: SerializeField] public float PlayerChasingRange { get; private set; }
