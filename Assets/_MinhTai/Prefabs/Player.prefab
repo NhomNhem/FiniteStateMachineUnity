@@ -2587,6 +2587,7 @@ GameObject:
   - component: {fileID: 3876635583400890865}
   - component: {fileID: 8186680642610253203}
   - component: {fileID: 8139669086428851741}
+  - component: {fileID: 3614325314239669477}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2629,10 +2630,10 @@ MonoBehaviour:
   <Controller>k__BackingField: {fileID: 8139669086428851741}
   <Animator>k__BackingField: {fileID: 8186680642610253203}
   <Targeter>k__BackingField: {fileID: 8699742624761376869}
-  <ForceReceive>k__BackingField: {fileID: 0}
+  <ForceReceive>k__BackingField: {fileID: 3614325314239669477}
   <Weapon>k__BackingField: {fileID: 4954885334442507654}
   <FreeLookMovementSpeed>k__BackingField: 6
-  <TargetingMovementSpeed>k__BackingField: 0
+  <TargetingMovementSpeed>k__BackingField: 5
   <RotationDamping>k__BackingField: 10
   <Attacks>k__BackingField:
   - <AnimationName>k__BackingField: Attack1
@@ -2640,8 +2641,9 @@ MonoBehaviour:
     <ComeboStateIndex>k__BackingField: 1
     <ComeboAttackTime>k__BackingField: 0.6
     <ForceTime>k__BackingField: 0
-    <Force>k__BackingField: 0
+    <Force>k__BackingField: 15
     <Damage>k__BackingField: 10
+    <Knockback>k__BackingField: 15
   - <AnimationName>k__BackingField: Attack2
     <TransitionDuration>k__BackingField: 0.1
     <ComeboStateIndex>k__BackingField: 2
@@ -2649,6 +2651,7 @@ MonoBehaviour:
     <ForceTime>k__BackingField: 0
     <Force>k__BackingField: 0
     <Damage>k__BackingField: 10
+    <Knockback>k__BackingField: 20
   - <AnimationName>k__BackingField: Attack3
     <TransitionDuration>k__BackingField: 0.2
     <ComeboStateIndex>k__BackingField: -1
@@ -2656,6 +2659,7 @@ MonoBehaviour:
     <ForceTime>k__BackingField: 0
     <Force>k__BackingField: 0
     <Damage>k__BackingField: 12
+    <Knockback>k__BackingField: 25
 --- !u!114 &95995969411043569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2741,6 +2745,21 @@ CharacterController:
   m_SkinWidth: 0.025
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1.06, z: 0}
+--- !u!114 &3614325314239669477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7844756085464989096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d63a40c67fdf9542b345d449b1b0e94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 8139669086428851741}
+  agent: {fileID: 0}
+  drap: 0.3
 --- !u!1 &7950967606102031755
 GameObject:
   m_ObjectHideFlags: 0
