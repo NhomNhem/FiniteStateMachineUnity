@@ -3765,6 +3765,7 @@ MonoBehaviour:
   <DodgeDuration>k__BackingField: 0.1
   <DodgeLength>k__BackingField: 0.75
   <DodgeCooldown>k__BackingField: 1
+  <JumpForce>k__BackingField: 4
   <Attacks>k__BackingField:
   - <AnimationName>k__BackingField: Attack1
     <TransitionDuration>k__BackingField: 0.1
