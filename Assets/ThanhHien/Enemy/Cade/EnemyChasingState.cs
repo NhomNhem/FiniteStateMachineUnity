@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyChasingState : EnemyBaseState
 {
@@ -18,11 +18,13 @@ public class EnemyChasingState : EnemyBaseState
     {
         if (!IsInChaseRange())
         {
+
             stateMachine.SwitchState(new EnemyIdleState(stateMachine));
             return;
         }
         else if (IsInAttackRange())
         {
+
             stateMachine.SwitchState(new EnemyAttackState(stateMachine));
             return;
         }
@@ -40,11 +42,13 @@ public class EnemyChasingState : EnemyBaseState
 
     private void MoveToPlayer(float deltaTime)
     {
-        if(stateMachine.Agent.isOnNavMesh)
+        if (stateMachine.Agent.isOnNavMesh)
         {
             stateMachine.Agent.destination = stateMachine.Player.transform.position;
             Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.MovementSpeed, deltaTime);
+            
         }
+
         stateMachine.Agent.velocity = stateMachine.Controller.velocity;
     }
 

@@ -11,7 +11,10 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action DogdeEvent;
     public event Action TargetEvent;
     public event Action CancelEvent;
+    public Vector2 MovementsValue { get; private set; }
+    public bool IsJumpPressed { get; private set; }
     private Controls controls;
+
     private void Start()
     {
         controls = new Controls();
@@ -25,8 +28,14 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     }
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (!context.performed) {return; }
-        JumpEvent?.Invoke();
+        if (context.performed)
+        {
+            IsJumpPressed = true;
+        }
+        if (context.canceled)
+        {
+            IsJumpPressed = false;
+        }
     }
 
     public void OnDogde(InputAction.CallbackContext context)

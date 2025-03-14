@@ -1,0 +1,34 @@
+using UnityEngine;
+
+public class PlayerFallingState : PlayerBaseState
+{
+    private readonly int FallHash = Animator.StringToHash("Fall");
+    private Vector3 momentum;
+    private const float CrossFadeDuration = 0.1f;
+    public PlayerFallingState(PlayerStateMachine stateMachine) : base(stateMachine)
+    {
+        stateMachine.Animator.CrossFadeInFixedTime(FallHash, CrossFadeDuration);
+    }
+
+    public override void Enter()
+    {
+        momentum = stateMachine.Controller.velocity;
+        momentum.y = 0f;
+        stateMachine.Animator.CrossFadeInFixedTime(FallHash, CrossFadeDuration);
+
+    }
+    public override void Tick(float detlatime)
+    {
+        Move(momentum, detlatime);
+        if (stateMachine.Controller.isGrounded)
+        {
+            ReturnToLoconmotion();
+        }
+
+
+    }
+    public override void Exit()
+    {
+
+    }
+}

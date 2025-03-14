@@ -16,9 +16,8 @@ public class PlayerTargetingState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.InputReader.TargetEvent += OnTarget;
-
         stateMachine.InputReader.DogdeEvent += OnDodge;
-
+        stateMachine.InputReader.JumpEvent += OnJump;
 
         if (stateMachine.Targeter.SelectTarget())
         {
@@ -42,7 +41,7 @@ public class PlayerTargetingState : PlayerBaseState
             stateMachine.SwitchState(new PlayerBlockState(stateMachine));
             return;
         }
-        if (stateMachine.Targeter.CurrentTarget == null)   
+        if (stateMachine.Targeter.CurrentTarget == null)
         {
             stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
             return;
@@ -62,6 +61,7 @@ public class PlayerTargetingState : PlayerBaseState
     {
         stateMachine.InputReader.TargetEvent -= OnTarget;
         stateMachine.InputReader.DogdeEvent -= OnDodge;
+        stateMachine.InputReader.JumpEvent -= OnJump;
     }
 
     private void OnTarget()
@@ -70,10 +70,23 @@ public class PlayerTargetingState : PlayerBaseState
         stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
         remainingDodgeTime = stateMachine.DodgetDuration;
     }
+
     private void OnDodge()
     {
-    
+        if (Time.time - stateMachine.PreviousDodgeTime < stateMachine.DodgetCooldown)
+        {
+            return;
+        }
+        stateMachine.SetDodgeTime(Time.time);
+
+        dodgeDirectionInput = stateMachine.InputReader.MovementValue;
+        remainingDodgeTime = stateMachine.DodgetDuration;
     }
+    private void OnJump()
+    {
+        stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
+    }
+
     private new void FaceTarget()
     {
         if (stateMachine.Targeter.CurrentTarget == null) return;
@@ -95,17 +108,19 @@ public class PlayerTargetingState : PlayerBaseState
     private Vector3 CalculateMovement(float deltaTime)
     {
         Vector3 movement = new Vector3();
-        if(remainingDodgeTime > 0f )
+        if (remainingDodgeTime > 0f)
         {
             movement += stateMachine.transform.right * dodgeDirectionInput.x * stateMachine.DodgetLength / stateMachine.DodgetDuration;
             movement += stateMachine.transform.forward * dodgeDirectionInput.y * stateMachine.DodgetLength / stateMachine.DodgetDuration;
 
-            remainingDodgeTime -= deltaTime;
-            if(remainingDodgeTime <0)
-            {
-                remainingDodgeTime = 0;
-            }
+            remainingDodgeTime = Mathf.Max(remainingDodgeTime - deltaTime, 0f);
         }
+        else
+        {
+            movement += stateMachine.transform.right * dodgeDirectionInput.x * stateMachine.InputReader.MovementValue.x;
+            movement += stateMachine.transform.forward * dodgeDirectionInput.y * stateMachine.InputReader.MovementValue.y;
+        }
+
         Vector3 forward = stateMachine.MainCameraTransform.forward;
         Vector3 right = stateMachine.MainCameraTransform.right;
 
@@ -115,7 +130,10 @@ public class PlayerTargetingState : PlayerBaseState
         forward.Normalize();
         right.Normalize();
 
-        return forward * stateMachine.InputReader.MovementValue.y + right * stateMachine.InputReader.MovementValue.x;
+        movement += forward * stateMachine.InputReader.MovementValue.y;
+        movement += right * stateMachine.InputReader.MovementValue.x;
+
+        return movement;
     }
 
     private void UpdateAnimator(float deltaTime)

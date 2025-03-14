@@ -21,6 +21,18 @@ public class EnemyStateMachine : StateMachine
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+
+        if (Player == null)
+        {
+
+            return;
+        }
+
+        if (!Agent.isOnNavMesh)
+        {
+
+        }
+
         Agent.updatePosition = false;
         Agent.updateRotation = false;
         SwitchState(new EnemyIdleState(this));

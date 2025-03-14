@@ -33,8 +33,10 @@ public class Targeter : MonoBehaviour
     public bool SelectTarget()
     {
         if (targets.Count == 0) { return false; }
+
         Target closestTarget = null;
         float closestTargetDistance = Mathf.Infinity;
+
         foreach (Target target in targets)
         {
             Vector2 viewPos = mainCamera.WorldToViewportPoint(target.transform.position);
@@ -42,27 +44,26 @@ public class Targeter : MonoBehaviour
             {
                 continue;
             }
+
             Vector2 toCenter = viewPos - new Vector2(0.5f, 0.5f);
             if (toCenter.sqrMagnitude < closestTargetDistance)
             {
                 closestTarget = target;
                 closestTargetDistance = toCenter.sqrMagnitude;
             }
-              
         }
-        if (closestTarget == null) { return false; }
+
+        // Kiểm tra nếu không có target nào hợp lệ thì dùng target đầu tiên trong danh sách
+        if (closestTarget == null)
+        {
+            if (targets.Count == 0) return false;
+            closestTarget = targets[0];
+        }
 
         CurrentTarget = closestTarget;
-            cineTargetGroup.AddMember(CurrentTarget.transform, 1f, 2f);
-            return true;
-        
-
-        
-        CurrentTarget = targets[0];
         cineTargetGroup.AddMember(CurrentTarget.transform, 1f, 2f);
         return true;
     }
-
 
     public void Cancel()
     {
@@ -80,6 +81,5 @@ public class Targeter : MonoBehaviour
             CurrentTarget = null;
         }
         target.OnDestroyed -= RemoveTarget;
-        targets.Remove(target);
     }
 }

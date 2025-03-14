@@ -15,7 +15,10 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public float RotationDamping { get; private set; }
     [field: SerializeField] public float DodgetDuration { get; private set; }
     [field: SerializeField] public float DodgetLength { get; private set; }
+    [field: SerializeField] public float DodgetCooldown { get; private set; }
+    [field: SerializeField] public float JumpForce { get; private set; }
     [field: SerializeField] public Attack[] Attacks { get; private set; }
+    public float PreviousDodgeTime { get;private set; } = Mathf.NegativeInfinity;
 
     private Quaternion originalRotation;
 
@@ -71,5 +74,9 @@ public class PlayerStateMachine : StateMachine
     private void HandleDie()
     {
         SwitchState(new PlayerDeadState(this));
+    }
+    public void SetDodgeTime(float dodgetime)
+    {
+        PreviousDodgeTime = dodgetime;
     }
 }
